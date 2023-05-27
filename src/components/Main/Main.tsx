@@ -41,7 +41,7 @@ export function Main() {
                 {textCopied ? (
                   <Check size={30} color='var(--green-500)' />
                 ) : (
-                  <Copy className='cursor-pointer hover:text-gray-300' size={30} onClick={() => handleCopyUrl(`${domain}${newUrl?.shortenedUrl}`)} />
+                  <Copy className='cursor-pointer hover:text-gray-300' size={30} onClick={() => handleCopyUrl(`https://${domain}${newUrl?.shortenedUrl}`)} />
                 )}
               </div>
             </h2>
