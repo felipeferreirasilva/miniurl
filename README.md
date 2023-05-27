@@ -1,3 +1,15 @@
+![](https://i.ibb.co/7tWWKSk/Screenshot-2023-05-27-at-16-07-21.png)
+
+# MiniURL
+
+## With this project, you can easily shorten your URLS.
+
+## https://miniurl.click
+
+<br /> <br />
+
+## Setup
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
