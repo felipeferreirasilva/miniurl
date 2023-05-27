@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { UrlForm } from '../UrlForm/UrlForm';
 import { Timestamp } from 'mongodb';
