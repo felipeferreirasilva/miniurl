@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
   try {
     const client = await clientPromise;
     const db = client.db("miniurl");
-    const collection = await db.collection("urls");
+    const collection = db.collection("urls");
 
     const newItem = {
       originalUrl: params.originalUrl.includes('http') ? params.originalUrl : `http://${params.originalUrl}`,
@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
   try {
     const client = await clientPromise;
     const db = client.db("miniurl");
-    const collection = await db.collection("urls");
+    const collection = db.collection("urls");
     const query = { shortenedUrl };
     const item = await collection.findOne(query);
     return NextResponse.json({ ...item })
