@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --white: #FFFFFF;
+  --red-500: #E25858;
+  --green-500: #b3f2b3;
+}
+
+body {
+  color: #FFF;
+  -webkit-font-smoothing: antialiased;
+}
