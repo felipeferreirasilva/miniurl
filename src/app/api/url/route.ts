@@ -1,6 +1,13 @@
 import clientPromise from "../../../lib/mongodb";
-import { NextRequest, NextResponse } from 'next/server';
 import ShortUniqueId from 'short-unique-id'
+import { NextRequest, NextResponse } from 'next/server';
+
+async function getCollection (dbName : string, collectionName: string) {
+  const client = await clientPromise;
+  const db = client.db(dbName);
+  const collection = db.collection(collectionName);
+  return collection;
+}
 
 export async function POST(req: NextRequest) {
   const uidGenerator = new ShortUniqueId({ length: 4 });
@@ -8,12 +15,10 @@ export async function POST(req: NextRequest) {
   const params = await req.json()
 
   try {
-    const client = await clientPromise;
-    const db = client.db("miniurl");
-    const collection = db.collection("urls");
-
+    const collection = await getCollection("miniurl", "urls");
+    const newUrl = params.originalUrl.includes('http') ? params.originalUrl : `http://${params.originalUrl}`;
     const newItem = {
-      originalUrl: params.originalUrl.includes('http') ? params.originalUrl : `http://${params.originalUrl}`,
+      originalUrl: newUrl,
       shortenedUrl: uuid,
       date: new Date()
     }
@@ -34,9 +39,7 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const client = await clientPromise;
-    const db = client.db("miniurl");
-    const collection = db.collection("urls");
+    const collection = await getCollection("miniurl", "urls");
     const query = { shortenedUrl };
     const item = await collection.findOne(query);
     return NextResponse.json({ ...item })
