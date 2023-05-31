@@ -1,16 +1,16 @@
 'use client'
 
-import { useEffect } from 'react';
 import axios from 'axios';
+import { useEffect } from 'react';
 import { useRouter } from "next/navigation";
 
-interface RedirectTypes {
+interface RedirectProps {
   params: {
     id: string
   };
 }
 
-export default function Redirect({ params }: RedirectTypes) {
+export default function Redirect({ params }: RedirectProps) {
   const { push } = useRouter();
 
   useEffect(() => {

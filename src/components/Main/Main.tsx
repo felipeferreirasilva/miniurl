@@ -5,7 +5,7 @@ import { UrlForm } from '../UrlForm/UrlForm';
 import { Timestamp } from 'mongodb';
 import { Copy, Check } from 'lucide-react';
 
-interface newUrlType {
+interface newUrlProps {
   originalUrl: string;
   shortenedUrl: string;
   date: Timestamp;
@@ -13,10 +13,13 @@ interface newUrlType {
 }
 
 export function Main() {
-  const [newUrl, setNewUrl] = useState<newUrlType>()
-  const [textCopied, setTextCopied] = useState(false)
+  const [newUrl, setNewUrl] = useState<newUrlProps>();
+  const [textCopied, setTextCopied] = useState(false);
+  const mainDomain = 'miniurl.click/';
+  const urlToShow = `${mainDomain}${newUrl?.shortenedUrl}`;
+  const urlToCopy = `https://${mainDomain}${newUrl?.shortenedUrl}`;
 
-  function onCreateNewUrl(shortened: newUrlType) {
+  function onCreateNewUrl(shortened: newUrlProps) {
     setNewUrl(shortened);
     setTextCopied(false);
   }
@@ -25,8 +28,6 @@ export function Main() {
     navigator.clipboard.writeText(url)
     setTextCopied(true)
   }
-
-  const domain = 'miniurl.click/'
 
   return (
     <main className="bg-gray-600">
@@ -37,11 +38,11 @@ export function Main() {
           <div>
             <h2 className="text-2xl font-semibold">
               <div className='flex flex-row items-center justify-center gap-4'>
-                <span className='underline'>{`${domain}${newUrl?.shortenedUrl}`}</span>
+                <span className='underline'>{urlToShow}</span>
                 {textCopied ? (
                   <Check className='text-green-500' size={30} />
                 ) : (
-                  <Copy className='cursor-pointer hover:text-gray-300' size={30} onClick={() => handleCopyUrl(`https://${domain}${newUrl?.shortenedUrl}`)} />
+                  <Copy className='cursor-pointer hover:text-gray-300' size={30} onClick={() => handleCopyUrl(urlToCopy)} />
                 )}
               </div>
             </h2>

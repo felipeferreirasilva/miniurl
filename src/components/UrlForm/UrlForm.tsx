@@ -5,7 +5,7 @@ import { Timestamp } from 'mongodb';
 import React, { ChangeEvent, useState, FormEvent } from 'react';
 import { Loader } from 'lucide-react';
 
-interface UrlFormTypes {
+interface UrlFormProps {
   onCreateNewUrl: (url: newUrlType) => void;
 }
 
@@ -16,7 +16,7 @@ interface newUrlType {
   _id: string;
 }
 
-export function UrlForm({ onCreateNewUrl }: UrlFormTypes) {
+export function UrlForm({ onCreateNewUrl }: UrlFormProps) {
   const [url, setUrl] = useState('');
   const [isLoading, setIsloading] = useState(false);
   const isSubmitBtnDisabled = url.length > 0 ? false : true;
