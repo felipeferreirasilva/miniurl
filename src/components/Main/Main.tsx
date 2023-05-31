@@ -39,7 +39,7 @@ export function Main() {
               <div className='flex flex-row items-center justify-center gap-4'>
                 <span className='underline'>{`${domain}${newUrl?.shortenedUrl}`}</span>
                 {textCopied ? (
-                  <Check size={30} color='var(--green-500)' />
+                  <Check className='text-green-500' size={30} />
                 ) : (
                   <Copy className='cursor-pointer hover:text-gray-300' size={30} onClick={() => handleCopyUrl(`https://${domain}${newUrl?.shortenedUrl}`)} />
                 )}

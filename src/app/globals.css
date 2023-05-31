@@ -4,11 +4,9 @@
 
 :root{
   --white: #FFFFFF;
-  --red-500: #E25858;
-  --green-500: #b3f2b3;
 }
 
 body {
-  color: #FFF;
+  color: var(--white);
   -webkit-font-smoothing: antialiased;
 }
